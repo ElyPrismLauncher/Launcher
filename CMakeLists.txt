@@ -265,7 +265,7 @@ set(Launcher_MSA_CLIENT_ID "c36a9fb6-4f2a-41ff-90bd-ae7cc92031eb" CACHE STRING "
 
 # By using this key in your builds you accept the terms of use laid down in
 # https://account.ely.by/rules
-set(Launcher_ELY_CLIENT_ID "elyprism-launcher" CACHE STRING "Client ID you can get from Ely.by Accounts for developers when you register an application")
+set(Launcher_ELY_CLIENT_ID "pineconemc" CACHE STRING "Client ID you can get from Ely.by Accounts for developers when you register an application")
 
 # By using this key in your builds you accept the terms and conditions laid down in
 # https://support.curseforge.com/en/support/solutions/articles/9000207405-curse-forge-3rd-party-api-terms-and-conditions
@@ -296,7 +296,7 @@ set(Launcher_BUILD_TIMESTAMP "${TODAY}")
 # Find the required Qt parts
 if(Launcher_QT_VERSION_MAJOR EQUAL 6)
     set(QT_VERSION_MAJOR 6)
-    find_package(Qt6 6.4 REQUIRED COMPONENTS Core CoreTools Widgets Concurrent Network Test Xml NetworkAuth OpenGL)
+    find_package(Qt6 6.8 REQUIRED COMPONENTS Core CoreTools Widgets Concurrent Network Test Xml NetworkAuth OpenGL)
     find_package(Qt6 COMPONENTS DBus)
     list(APPEND Launcher_QT_DBUS Qt6::DBus)
 else()

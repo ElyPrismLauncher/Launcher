@@ -137,9 +137,6 @@ MSAStep::MSAStep(AccountData* data, bool silent, QString clientId, QString scope
     m_oauth2.setScope(scopes);
     m_oauth2.setClientIdentifier(m_clientId);
     m_oauth2.setNetworkAccessManager(APPLICATION->network());
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
-    m_oauth2.setPkceMethod(QOAuth2AuthorizationCodeFlow::PkceMethod::None);
-#endif
 
     connect(&m_oauth2, &QOAuth2AuthorizationCodeFlow::granted, this, [this] {
         m_data->msaClientID = m_oauth2.clientIdentifier();
