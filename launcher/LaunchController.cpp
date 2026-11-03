@@ -61,6 +61,7 @@
 #include "launch/steps/TextPrint.h"
 #include "tasks/Task.h"
 #include "ui/dialogs/ChooseOfflineNameDialog.h"
+#include "ui/dialogs/ElyLoginDialog.h"
 
 LaunchController::LaunchController() = default;
 
@@ -349,8 +350,14 @@ bool LaunchController::reauthenticateAccount(const MinecraftAccountPtr& account,
     if (button == QMessageBox::StandardButton::Yes) {
         auto* accounts = APPLICATION->accounts();
         const bool isDefault = accounts->defaultAccount() == account;
-        if (account->accountType() == AccountType::MSA) {
-            auto newAccount = MSALoginDialog::newAccount(m_parentWidget);
+        if (account->accountType() != AccountType::Offline) {
+            MinecraftAccountPtr newAccount = nullptr;
+
+            if (account->accountType() == AccountType::MSA) {
+                newAccount = MSALoginDialog::newAccount(m_parentWidget);
+            } else if (account->accountType() == AccountType::Ely) {
+                newAccount = ElyLoginDialog::newAccount(m_parentWidget);
+            }
 
             if (newAccount != nullptr) {
                 accounts->removeAccount(accounts->index(accounts->findAccountByProfileId(account->profileId())));
