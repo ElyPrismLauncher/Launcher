@@ -5,7 +5,11 @@ body:
 - type: markdown
   attributes:
     value: |
-      If you need help with running Minecraft, please visit us on our Discord before making a bug report.
+      > [!IMPORTANT]
+      > If you need help with running Minecraft, please visit us on our Discord before making a bug report.
+
+      > [!NOTE]
+      > When writing a bug report, please use **English**. Any assistance provided will be exclusively in this language.
 
       Before submitting a bug report, please make sure you have read this *entire* form, and that:
       * You have read the FAQ on the [website](https://pineconemc.ru/#faq) ([alternative link](https://elyprismlauncher.github.io/#faq)) and it has not answered your question.
@@ -28,14 +32,14 @@ body:
   attributes:
     label: Version of PineconeMC
     description: The version of PineconeMC used in the bug report.
-    placeholder: PineconeMC 10.0.6
+    placeholder: PineconeMC 11.1.2
   validations:
     required: true
 - type: input
   attributes:
     label: Version of Qt
     description: The version of Qt used in the bug report. You can find it in Help -> About PineconeMC -> About Qt.
-    placeholder: Qt 6.3.0
+    placeholder: Qt 6.12.0
   validations:
     required: true
 - type: textarea
