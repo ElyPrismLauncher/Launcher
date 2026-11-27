@@ -64,8 +64,13 @@ void Flame::loadManifest(Flame::Manifest& m, const QString& filepath)
         throw JSONValidationError("Not a modpack manifest!");
     }
     m.manifestVersion = Json::requireInteger(obj, "manifestVersion");
-    if (m.manifestVersion != 1) {
-        throw JSONValidationError(QString("Unknown manifest version (%1)").arg(m.manifestVersion));
+    switch(m.manifestVersion){
+        case 1:
+        case 2:
+            loadManifestV1(m, obj);
+            break;
+        default:
+             throw JSONValidationError(QString("Unknown manifest version (%1)").arg(m.manifestVersion));
     }
-    loadManifestV1(m, obj);
+    
 }
